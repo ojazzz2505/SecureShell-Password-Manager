@@ -60,7 +60,7 @@ Before writing code, you **MUST** read the architecture guide. It explains **The
 ---
 
 ## 🤝 Contribution Rules
-1.  **Do not break the build**: Run `SPM1-Test` before pushing.
+1.  **Do not break the build**: Run `SPM` before pushing.
 2.  **Use Comments**: If you write complex logic, explain it.
 3.  **Global Data**: Remember we save data to `Path.home() / .spm_data`, NOT the local folder.
 
