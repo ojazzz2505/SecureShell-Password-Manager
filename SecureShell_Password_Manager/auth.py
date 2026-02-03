@@ -1,0 +1,78 @@
+# ==========================================
+# MISSION: SECURITY GROUP
+# ==========================================
+# Your job is to handle the encryption (locking) and description (unlocking).
+# You will use the 'cryptography' library.
+
+import os
+import base64
+import hashlib
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from pathlib import Path
+
+# ==========================================
+# GLOBAL SETTINGS
+# ==========================================
+# TODO: Define a specific folder where we will save our secret keys.
+# Hint: Use Path.home() / ".spm_data"
+# APP_DIR = ...
+
+# ==========================================
+# FUNCTIONS
+# ==========================================
+
+def setup_config(master_password):
+    # This function is run ONLY when the app is first set up.
+    # We need to save two things:
+    # 1. A "Salt" (random data to make encryption stronger).
+    # 2. A "Check Hash" (to verify if the password is correct later).
+    
+    # TODO:
+    # 1. Generate a random salt (os.urandom).
+    # 2. Hash the master_password + salt using hashlib.sha256.
+    # 3. Save the salt to a file (e.g., 'security_salt.key') in APP_DIR.
+    # 4. Save the hash to a file (e.g., 'security_hash.bin') in APP_DIR.
+    pass
+
+def verify_password(input_password):
+    # This function checks if the user entered the correct Master Password.
+    # We do THIS instead of storing the actual password.
+    
+    # TODO:
+    # 1. Load the Salt and the stored Check Hash from files.
+    # 2. Re-calculate the hash of (input_password + salt).
+    # 3. Return True if the new hash matches the stored hash, else False.
+    return False
+
+def derive_key(master_password, salt):
+    # This turns the password into a secure 32-byte encryption key.
+    
+    # TODO:
+    # 1. Create a PBKDF2HMAC object (use SHA256, length=32, iterations=100000).
+    # 2. Use it to derive the key from the master_password.
+    # 3. Return the base64 encoded key.
+    pass
+
+def encrypt(data, key):
+    # Locks the data.
+    # TODO: Use Fernet(key).encrypt()
+    pass
+
+def decrypt(ciphertext, key):
+    # Unlocks the data.
+    # TODO: Use Fernet(key).decrypt()
+    pass
+
+def get_salt():
+    # Helper to just read the salt from the file.
+    pass
+
+def setup_is_complete():
+    # Helper to check if our files (salt/hash) already exist.
+    # Return True if they do, False if they don't.
+    return False
