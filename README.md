@@ -20,14 +20,26 @@ This repository contains the full source code for our password manager.
 ## 🛠️ Developer Setup Guide
 Follow these steps exactly to get your environment ready.
 
-### 1. Install in "Editable Mode"
-Open your terminal in this folder and run:
+### 1. Create Project Folder
+Open your terminal and run:
+```powershell
+mkdir "ACM_Project_1"
+cd "ACM_Project_1"
+```
+
+### 2. Clone the Repository
+```powershell
+git clone https://github.com/ojazzz2505/SecureShell-Password-Manager.git
+cd SecureShell-Password-Manager
+```
+
+### 3. Install in "Editable Mode"
+**This is crucial!** It allows you to edit the code and run it immediately without reinstalling.
 ```powershell
 pip install -e .
 ```
-*This allows you to edit the code and run it immediately without reinstalling.*
 
-### 2. Run the Application
+### 4. Run the Application
 ```powershell
 SPM
 ```
