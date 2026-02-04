@@ -97,5 +97,6 @@ Before writing code, you **MUST** read the architecture guide. It explains **The
 1.  **Do not break the build**: Run `SPM` before pushing.
 2.  **Use Comments**: If you write complex logic, explain it.
 3.  **Global Data**: Remember we save data to `Path.home() / .spm_data`, NOT the local folder.
+4. **Discord**: Go to the programming channel and type a message explaining which file and function you will be working on, so if multiple people are working on the same file, they are working on different parts and there is no overlap.
 
 Good luck team! Let's build something secure. 🚀
