@@ -38,14 +38,14 @@ def setup_config(master_password):
     # 1. Generate a random salt (os.urandom).
     secure_salt = str(os.urandom(16))
     # 2. Hash the master_password + salt using hashlib.sha256.
-    master_hash = hashlib.sha256(master_password+secure_salt).hexdigest()
+    master_hash = hashlib.sha256(master_password.encode()+secure_salt.encode()).hexdigest()
     # 3. Save the salt to a file (e.g., 'security_salt.key') in APP_DIR.
     with open(APP_DIR+"/security_salt.key", 'w') as f:
         f.write(secure_salt)
     # 4. Save the hash to a file (e.g., 'security_hash.bin') in APP_DIR.
     with open(APP_DIR+"/security_hash.bin", 'w') as f:
         f.write(master_hash)
-    pass
+    
 
 def verify_password(input_password):
     # This function checks if the user entered the correct Master Password.
@@ -53,9 +53,15 @@ def verify_password(input_password):
     
     # TODO:
     # 1. Load the Salt and the stored Check Hash from files.
+    with open(APP_DIR+"/security_salt.key", 'r') as f:
+        secure_salt = f.read()
     # 2. Re-calculate the hash of (input_password + salt).
+    check_hash = hashlib.sha256(input_password.encode()+secure_salt.encode()).hexdigest()
     # 3. Return True if the new hash matches the stored hash, else False.
-    return False
+    with open(APP_DIR+"/security_hash.bin", 'r') as f:
+        master_hash = f.read()
+
+    return (master_hash == check_hash)
 
 def derive_key(master_password, salt):
     # This turns the password into a secure 32-byte encryption key.
