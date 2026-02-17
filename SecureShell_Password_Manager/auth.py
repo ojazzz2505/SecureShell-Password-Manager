@@ -20,7 +20,9 @@ from pathlib import Path
 # ==========================================
 # TODO: Define a specific folder where we will save our secret keys.
 # Hint: Use Path.home() / ".spm_data"
-# APP_DIR = ...
+APP_DIR = str(Path.home()) + "/.spm_data"
+
+os.makedirs(APP_DIR, exist_ok=True)
 
 # ==========================================
 # FUNCTIONS
@@ -34,9 +36,15 @@ def setup_config(master_password):
     
     # TODO:
     # 1. Generate a random salt (os.urandom).
+    secure_salt = str(os.urandom(16))
     # 2. Hash the master_password + salt using hashlib.sha256.
+    master_hash = hashlib.sha256(master_password+secure_salt).hexdigest()
     # 3. Save the salt to a file (e.g., 'security_salt.key') in APP_DIR.
+    with open(APP_DIR+"/security_salt.key", 'w') as f:
+        f.write(secure_salt)
     # 4. Save the hash to a file (e.g., 'security_hash.bin') in APP_DIR.
+    with open(APP_DIR+"/security_hash.bin", 'w') as f:
+        f.write(master_hash)
     pass
 
 def verify_password(input_password):
