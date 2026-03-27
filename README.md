@@ -27,11 +27,13 @@ mkdir "ACM_Project_1"
 cd "ACM_Project_1"
 ```
 
-### 2. Clone the Repository
-```powershell
-git clone https://github.com/ojazzz2505/SecureShell-Password-Manager.git
-cd SecureShell-Password-Manager
-```
+### 2. Fork & Clone the Repository
+1.  **Fork this Repo**: Click the "Fork" button in the top right of GitHub.
+2.  **Clone YOUR Fork**:
+    ```powershell
+    git clone https://github.com/YOUR_USERNAME/SecureShell-Password-Manager.git
+    cd SecureShell-Password-Manager
+    ```
 
 ### 3. Install in "Editable Mode"
 **This is crucial!** It allows you to edit the code and run it immediately without reinstalling.
@@ -55,6 +57,26 @@ The code is split so we can work in parallel. Go to the `SecureShell_Password_Ma
 | **`auth.py`** | **The Security** | Implement PBKDF2 (Keys) and Fernet (Encryption). |
 | **`storage.py`** | **The Database** | Handle saving `passwords.json` and config files. |
 | **`main.py`** | **The Coordinator** | The entry point. |
+
+## 👥 Team Workflow & Branches
+We are dividing the team into 3 groups. You will work on a specific **Branch** depending on your role.
+
+| Group | Branch Name | Max Members | Role |
+| :--- | :--- | :--- | :--- |
+| **Interface** | `tui-dev` | **1 Person** (Recommended) | Work on `tui.py`. Connects everything together. |
+| **Security** | `auth-dev` | Any | Work on `auth.py`. Implement Encryption & Keys. |
+| **Storage** | `storage-dev` | Any | Work on `storage.py`. Handle File I/O. |
+
+### How to start working:
+1.  **Create your branch**:
+    ```powershell
+    git checkout -b <branch-name>  # e.g., git checkout -b auth-dev
+    ```
+2.  **Code & Commit**: Work on your assigned file.
+3.  **Push**:
+    ```powershell
+    git push origin <branch-name>
+    ```
 
 ### 💡 How to Contribute
 We have left **Step-by-Step Comments** inside each file.
